@@ -1652,7 +1652,7 @@ export default function InteractiveLoveBook() {
               </div>
               <p className="text-2xl font-bold text-amber-800 mb-2">{state.value}%</p>
               <p className="text-sm text-amber-600">Deslize até 100% para mostrar seu amor!</p>
-              {state.value >= state.maxValue && <div className="mt-4 text-2xl animate-bounce">💯 Máximo! 💯</div>}
+              {state.value >= state.maxValue && <div className="mt-4 text-2xl animate-bounce"> Máximo! </div>}
             </div>
           </div>
         )
@@ -1757,7 +1757,7 @@ export default function InteractiveLoveBook() {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <Card className="w-full max-w-sm bg-gradient-to-br from-pink-100 to-red-100 shadow-2xl border-pink-200">
             <CardContent className="p-6 text-center">
-              <div className="text-4xl mb-4 animate-bounce">🎉</div>
+              <div className="text-4xl mb-4 animate-bounce"></div>
               <p className="text-pink-800 text-lg leading-relaxed mb-4">{showSurprise}</p>
               <Button
                 onClick={() => setShowSurprise(null)}
