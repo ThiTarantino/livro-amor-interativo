@@ -6,8 +6,8 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Livro Interativo de Amor 📚💕",
-  description: "30 páginas de amor, jogos e surpresas especiais",
+  title: "Livro do nosso Amor 📚💕",
+  description: "30 páginas para ler quando sentir saudade.",
     generator: 'v0.app'
 }
 

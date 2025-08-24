@@ -48,7 +48,7 @@ const bookPages: BookPage[] = [
     id: 0,
     type: "cover",
     title: "Nossa História de Amor",
-    content: "Um livro especial feito com todo meu carinho para você 💕",
+    content: "Um livro especial feito com todo meu amor para você",
   },
 
   // Capítulo 1: O Começo
@@ -64,7 +64,7 @@ const bookPages: BookPage[] = [
     type: "story",
     title: "O Dia que Mudou Tudo",
     content:
-      "Era uma vez, em um dia comum que se tornou extraordinário, quando nossos olhares se cruzaram pela primeira vez. Naquele momento, o mundo parou e eu soube que você seria especial. Seu sorriso iluminou meu coração de uma forma que eu nunca imaginei ser possível. ✨",
+      "Era uma vez, em um dia comum que se tornou extraordinário, quando nossos olhares se cruzaram pela primeira vez. Naquele momento, o mundo parou e eu soube que você seria especial. Seu sorriso iluminou meu coração de uma forma que eu nunca imaginei ser possível.",
     surprises: [
       {
         text: "💕",
@@ -110,7 +110,7 @@ const bookPages: BookPage[] = [
     surprises: [
       {
         text: "🎭",
-        message: "Você tem o dom de me fazer rir até nas horas mais difíceis! Seu humor é incrível! 😂",
+        message: "Você tem o dom de me fazer feliz até nos momentos mais difíceis! Eu te amooo!",
         icon: Heart,
         position: { x: 60, y: 45 },
       },
@@ -166,17 +166,17 @@ const bookPages: BookPage[] = [
     type: "story",
     title: "Descobrindo Seus Sonhos",
     content:
-      "A cada dia que passava, eu descobria algo novo e maravilhoso sobre você. Seus sonhos, seus medos, suas paixões - tudo em você me fascinava. Você se tornou não apenas minha paixão, mas minha melhor amiga. 🌸",
+      "A cada dia que passa, eu descobro algo novo e maravilhoso sobre você. Seus sonhos, seus medos, suas paixões - tudo em você me fascina. Você se tornou não apenas minha paixão, mas a minha maior conquista. 🌸",
     surprises: [
       {
         text: "🦋",
-        message: "Como uma borboleta, você transformou minha vida com sua beleza e delicadeza! 🦋✨",
+        message: "Se o amor tivesse forma, seria uma borboleta pousando suave em nosso destino! 🦋✨",
         icon: Heart,
         position: { x: 75, y: 30 },
       },
       {
         text: "🌙",
-        message: "Você é minha lua! Ilumina minhas noites e torna meus sonhos mais bonitos! 🌙💫",
+        message: "Se eu pudesse, traria a lua só pra te ver sorrir.! 🌙💫",
         icon: Star,
         position: { x: 30, y: 75 },
       },
@@ -237,11 +237,11 @@ const bookPages: BookPage[] = [
     type: "story",
     title: "Nossa Primeira Aventura",
     content:
-      "Lembro do nosso primeiro passeio juntos. Caminhamos, conversamos, rimos... Cada passo ao seu lado era uma nova descoberta. Naquele dia, eu soube que queria viver muitas aventuras com você. 🚶‍♂️🚶‍♀️",
+      "Nosso primeiro encontro na praça. Caminhamos, conversamos, rimos... Cada passo ao seu lado era uma nova descoberta. Naquele dia, eu soube que queria viver muitas aventuras com você. 🚶‍♂️🚶‍♀️",
     surprises: [
       {
         text: "🗺️",
-        message: "Cada lugar que visitamos juntos se torna especial! Você transforma qualquer lugar em paraíso! 🗺️💕",
+        message: "Cada lugar que visitaremos juntos se tornará especial! Você transforma qualquer lugar em paraíso! 🗺️💕",
         icon: Heart,
         position: { x: 65, y: 55 },
       },
@@ -304,11 +304,11 @@ const bookPages: BookPage[] = [
     type: "story",
     title: "Juntos Somos Invencíveis",
     content:
-      "Nem tudo foram flores, mas cada desafio que enfrentamos juntos nos tornou mais unidos. Aprendi que o amor verdadeiro não é apenas sobre os momentos felizes, mas sobre estar ao lado um do outro em todos os momentos. 💪",
+      "Nem tudo são flores, mas cada desafio que enfrentaremos juntos nos tornará mais unidos. Aprendi que o amor verdadeiro não é apenas sobre os momentos felizes, mas sobre estar ao lado um do outro em todos os momentos.",
     surprises: [
       {
         text: "⚡",
-        message: "Juntos somos uma força da natureza! Nada pode nos parar quando estamos unidos! ⚡💪",
+        message: "Quando estamos juntos, até a própria natureza se curva diante da nossa força! ⚡💪",
         icon: Heart,
         position: { x: 45, y: 40 },
       },
@@ -322,13 +322,13 @@ const bookPages: BookPage[] = [
     interactive: {
       type: "word-find",
       data: {
-        words: ["AMOR", "CARINHO", "PAIXAO", "FELIZ", "ETERNO"],
+        words: ["AMOR", "UNIDOS", "PAIXAO", "FELIZ", "ETERNO"],
         found: [],
         selectedCells: [],
         grid: [
           ["A", "M", "O", "R", "X", "E"],
-          ["C", "A", "R", "I", "N", "T"],
-          ["P", "A", "I", "X", "A", "E"],
+          ["U", "N", "I", "D", "O", "S"],
+          ["P", "A", "I", "X", "A", "O"],
           ["F", "E", "L", "I", "Z", "R"],
           ["O", "H", "O", "S", "O", "N"],
           ["E", "T", "E", "R", "N", "O"],
@@ -347,7 +347,6 @@ const bookPages: BookPage[] = [
             { row: 1, col: 3 },
             { row: 1, col: 4 },
             { row: 1, col: 5 },
-            { row: 0, col: 5 },
           ],
           PAIXAO: [
             { row: 2, col: 0 },
@@ -417,17 +416,17 @@ const bookPages: BookPage[] = [
     type: "story",
     title: "Cada Dia é um Presente",
     content:
-      "Hoje, quando acordo e vejo você, sei que sou a pessoa mais sortuda do mundo. Cada dia ao seu lado é um presente que eu desembrulho com gratidão. Você trouxe cores para minha vida que eu nem sabia que existiam. 🎁",
+      "Hoje, quando acordo e vejo você, sei que sou a pessoa mais sortuda do mundo. Cada dia ao seu lado é um presente que eu desembrulho com gratidão. Você trouxe cores para minha vida que eu nem sabia que existiam.",
     surprises: [
       {
         text: "☀️",
-        message: "Você é meu sol! Ilumina todos os meus dias e afasta qualquer tristeza! ☀️🌈",
+        message: "Você é meu sol! Em você encontro a luz que dissipa qualquer sombra dentro de mim!",
         icon: Star,
         position: { x: 70, y: 35 },
       },
       {
         text: "🏠",
-        message: "Onde você está é minha casa! Você é meu lar, meu refúgio, meu lugar favorito! 🏠💕",
+        message: "Onde você está é minha casa! Você é meu lar, meu refúgio, meu lugar favorito!",
         icon: Heart,
         position: { x: 30, y: 65 },
       },
@@ -452,7 +451,7 @@ const bookPages: BookPage[] = [
         completed: false,
       },
       completed: false,
-      reward: "🔢 Perfeito! Cada número representa um momento especial nosso! 🔢",
+      reward: " Perfeito! Cada número representa um beijo que voce me deve ksksksks! ",
     },
   },
   {
@@ -468,7 +467,7 @@ const bookPages: BookPage[] = [
         completed: false,
       },
       completed: false,
-      reward: "💯 Isso mesmo! Meu amor por você está sempre no máximo! 100% sempre! 💯",
+      reward: " Isso mesmo! Meu amor por você está sempre no máximo! 100% sempre! ",
     },
   },
 
@@ -485,11 +484,11 @@ const bookPages: BookPage[] = [
     type: "story",
     title: "Sonhando Juntos",
     content:
-      "Quando penso no futuro, você está em cada sonho, em cada plano, em cada esperança. Quero envelhecer ao seu lado, criar memórias, viver aventuras e continuar me apaixonando por você todos os dias. 🌟",
+      "Quando penso no futuro, você está em cada sonho, em cada plano, em cada esperança. Quero envelhecer ao seu lado, criar memórias, viver aventuras e continuar me apaixonando por você todos os dias.",
     surprises: [
       {
         text: "🌈",
-        message: "Nosso futuro será colorido como um arco-íris! Cheio de alegria e momentos especiais! 🌈✨",
+        message: "Nosso futuro será colorido como um arco-íris! Cheio de alegria e momentos especiais!",
         icon: Star,
         position: { x: 55, y: 50 },
       },
@@ -532,7 +531,7 @@ const bookPages: BookPage[] = [
       },
       {
         text: "🎁",
-        message: "SURPRESA MISTERIOSA! 🎁 Tenho algo muito especial guardado para você! 😉",
+        message: "VALE-PRESENTE! 🎁 Um presente ou um beijo misterioso?! 😉",
         icon: Gift,
         position: { x: 25, y: 65 },
       },
@@ -557,7 +556,7 @@ const bookPages: BookPage[] = [
     type: "story",
     title: "Promessas de Amor",
     content:
-      "Prometo te amar para sempre, em todos os momentos da vida. Prometo ser seu companheiro em todas as aventuras. Prometo sempre cuidar de você e te proteger. Prometo sempre te fazer sorrir, mesmo nos dias difíceis. 💍",
+      "Prometo te amar para sempre, em todos os momentos da minha vida. Prometo ser seu companheiro em todas as aventuras. Prometo sempre cuidar de você e te proteger. Prometo sempre te fazer sorrir, mesmo nos dias difíceis.",
     surprises: [
       {
         text: "💍",
@@ -576,7 +575,7 @@ const bookPages: BookPage[] = [
     surprises: [
       {
         text: "♾️",
-        message: "INFINITO! ♾️ Assim é meu amor por você - sem começo, sem fim, sempre crescendo! 💫",
+        message: "INFINITO! ♾️ Assim é meu amor por você - SemEspaçoSemvirgulaESemPontoFinal ",
         icon: Heart,
         position: { x: 50, y: 50 },
       },
@@ -1710,17 +1709,17 @@ export default function InteractiveLoveBook() {
           <CardContent className="p-8 text-center">
             <div className="mb-6">
               <div className="text-6xl mb-4 animate-bounce">📚</div>
-              <h1 className="text-3xl font-bold text-amber-800 mb-2">Livro Interativo de Amor</h1>
-              <p className="text-amber-700 text-lg mb-4">30 páginas de amor, jogos e surpresas especiais! 💕</p>
+              <h1 className="text-3xl font-bold text-amber-800 mb-2">Livro do nosso Amor</h1>
+              <p className="text-amber-700 text-lg mb-4">30 páginas para ler quando sentir saudade.! 💕</p>
             </div>
 
             <div className="mb-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
               <h3 className="font-semibold text-amber-800 mb-2">O que você vai encontrar:</h3>
               <div className="text-sm text-amber-700 space-y-1">
                 <p>📖 7 capítulos da nossa história</p>
-                <p>🎮 12 jogos interativos únicos</p>
+                <p>🎮 jogos interativos únicos</p>
                 <p>💕 Surpresas escondidas em cada página</p>
-                <p>🎁 Vales especiais (beijo, jantar, massagem...)</p>
+                <p>🎁 Muito amor e dedicação</p>
                 <p>✍️ Página final para sua mensagem</p>
               </div>
             </div>
@@ -1904,7 +1903,7 @@ export default function InteractiveLoveBook() {
             </div>
 
             {/* Controles de navegação */}
-            <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center">
+            <div className="absolute bottom-0 left-4 right-4 flex justify-between items-center">
               <Button
                 onClick={() => flipPage("prev")}
                 disabled={currentPage === 0 || isFlipping}
