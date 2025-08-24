@@ -1717,10 +1717,8 @@ export default function InteractiveLoveBook() {
               <h3 className="font-semibold text-amber-800 mb-2">Mini sinopse:</h3>
               <div className="text-sm text-amber-700 space-y-1">
                 <p>Olá Isabele Da silva Luetkemeyer</p>
-                <p>Este não é apenas um livro, é um pedaço do meu coração.</p>
-                <p>Cada página foi criada para que, quando a saudade apertar,</p>
-                <p>você possa me encontrar nas palavras, nos jogos e nos pequenos detalhes.</p>
-                <p>É um lugar seguro onde, mesmo distante, eu sempre estarei ao seu lado."</p>
+                <p>Este não é apenas um livro, é um pedaço do meu coração. Cada página foi criada para que, quando a saudade apertar, você possa me encontrar nas palavras, nos jogos e nos pequenos detalhes. Aqui, nosso amor ganha forma em histórias, memórias e sorrisos. É um lugar seguro onde, mesmo distante, eu sempre estarei ao seu lado.</p>
+                
               </div>
             </div>
 
