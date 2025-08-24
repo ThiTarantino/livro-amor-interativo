@@ -571,13 +571,13 @@ const bookPages: BookPage[] = [
     type: "story",
     title: "Infinito",
     content:
-      "Não importa quantas páginas este livro tenha, nossa história nunca terá fim. Cada dia é uma nova página, cada momento uma nova linha de amor. Te amo hoje, amanhã e sempre! 💖♾️",
+      "Não importa quantas páginas este livro tenha, nossa história nunca terá fim. Cada dia é uma nova página, cada momento uma nova linha de amor. Te amo hoje, amanhã e sempre!",
     surprises: [
       {
         text: "♾️",
-        message: "INFINITO! ♾️ Assim é meu amor por você - SemEspaçoSemvirgulaESemPontoFinal ",
+        message: "INFINITO! ♾️ Assim é meu amor por você - SemEspaçoSemVirgulaESemPontoFinal - EuTeAmo",
         icon: Heart,
-        position: { x: 50, y: 50 },
+        position: { x: 50, y: 140 },
       },
     ],
   },
