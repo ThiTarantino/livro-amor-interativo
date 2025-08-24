@@ -159,14 +159,14 @@ const bookPages: BookPage[] = [
     type: "chapter",
     chapter: 3,
     title: "Crescendo Juntos",
-    content: "Nosso amor floresceu como uma bela flor...",
+    content: "Nosso amor cresceu firme e forte, como algo que nasceu para durar.",
   },
   {
     id: 9,
     type: "story",
     title: "Descobrindo Seus Sonhos",
     content:
-      "A cada dia que passa, eu descobro algo novo e maravilhoso sobre você. Seus sonhos, seus medos, suas paixões - tudo em você me fascina. Você se tornou não apenas minha paixão, mas a minha maior conquista. 🌸",
+      "A cada dia que passa, eu descobro algo novo e maravilhoso sobre você. Seus sonhos, seus medos, suas paixões - tudo em você me fascina. Você se tornou não apenas minha paixão, mas a minha maior conquista. ",
     surprises: [
       {
         text: "🦋",
@@ -237,7 +237,7 @@ const bookPages: BookPage[] = [
     type: "story",
     title: "Nossa Primeira Aventura",
     content:
-      "Nosso primeiro encontro na praça. Caminhamos, conversamos, rimos... Cada passo ao seu lado era uma nova descoberta. Naquele dia, eu soube que queria viver muitas aventuras com você. 🚶‍♂️🚶‍♀️",
+      "Nosso primeiro encontro na praça. Caminhamos, conversamos, rimos... Cada passo ao seu lado era uma nova descoberta. Naquele dia, eu soube que queria viver muitas aventuras com você.",
     surprises: [
       {
         text: "🗺️",
@@ -272,15 +272,15 @@ const bookPages: BookPage[] = [
       type: "puzzle",
       data: {
         pieces: [
-          { id: 1, currentPos: 0, correctPos: 0, symbol: "💕" },
-          { id: 2, currentPos: 1, correctPos: 1, symbol: "💖" },
-          { id: 3, currentPos: 2, correctPos: 2, symbol: "💗" },
-          { id: 4, currentPos: 3, correctPos: 3, symbol: "💘" },
-          { id: 5, currentPos: 4, correctPos: 4, symbol: "💝" },
-          { id: 6, currentPos: 5, correctPos: 5, symbol: "💞" },
-          { id: 7, currentPos: 6, correctPos: 6, symbol: "💟" },
-          { id: 8, currentPos: 7, correctPos: 7, symbol: "❤️" },
-          { id: 9, currentPos: 8, correctPos: 8, symbol: "💙" },
+          { id: 1, currentPos: 0, correctPos: 0, symbol: "🙈" },
+          { id: 2, currentPos: 1, correctPos: 1, symbol: "🙉" },
+          { id: 3, currentPos: 2, correctPos: 2, symbol: "🙊" },
+          { id: 4, currentPos: 3, correctPos: 3, symbol: "🙋‍♂️" },
+          { id: 5, currentPos: 4, correctPos: 4, symbol: "🙋‍♀️" },
+          { id: 6, currentPos: 5, correctPos: 5, symbol: "👪" },
+          { id: 7, currentPos: 6, correctPos: 6, symbol: "😛" },
+          { id: 8, currentPos: 7, correctPos: 7, symbol: "😜" },
+          { id: 9, currentPos: 8, correctPos: 8, symbol: "🤪" },
         ],
         selectedPiece: null,
         moves: 0,
@@ -399,7 +399,7 @@ const bookPages: BookPage[] = [
         attempts: 0,
       },
       completed: false,
-      reward: "✨ Mágico! Seu toque sempre cria magia na minha vida! ✨",
+      reward: "✨ Seu toque não encosta só na pele… ele alcança minha alma. ✨",
     },
   },
 
@@ -416,7 +416,7 @@ const bookPages: BookPage[] = [
     type: "story",
     title: "Cada Dia é um Presente",
     content:
-      "Hoje, quando acordo e vejo você, sei que sou a pessoa mais sortuda do mundo. Cada dia ao seu lado é um presente que eu desembrulho com gratidão. Você trouxe cores para minha vida que eu nem sabia que existiam.",
+      "Quando olhei para você, descubri que a sorte tem seu nome. Cada dia é um presente, e você trouxe luz e cores para minha vida que eu nem sabia que podiam sentir.",
     surprises: [
       {
         text: "☀️",
@@ -426,7 +426,7 @@ const bookPages: BookPage[] = [
       },
       {
         text: "🏠",
-        message: "Onde você está é minha casa! Você é meu lar, meu refúgio, meu lugar favorito!",
+        message: "Você não é apenas meu amor, é meu lar, meu porto seguro, meu lugar favorito no mundo.",
         icon: Heart,
         position: { x: 30, y: 65 },
       },
@@ -467,7 +467,7 @@ const bookPages: BookPage[] = [
         completed: false,
       },
       completed: false,
-      reward: " Isso mesmo! Meu amor por você está sempre no máximo! 100% sempre! ",
+      reward: " Isso mesmo! Meu amor por você está sempre no máximo! 100% seuuu!  ",
     },
   },
 
@@ -488,7 +488,7 @@ const bookPages: BookPage[] = [
     surprises: [
       {
         text: "🌈",
-        message: "Nosso futuro será colorido como um arco-íris! Cheio de alegria e momentos especiais!",
+        message: "Como em um arco-íris, no final sempre terá um grande tesouro!",
         icon: Star,
         position: { x: 55, y: 50 },
       },
@@ -508,7 +508,7 @@ const bookPages: BookPage[] = [
         completed: false,
       },
       completed: false,
-      reward: "💝 Incrível! Você entende perfeitamente o padrão do meu coração! 💝",
+      reward: "💝 Incrível! Você entende perfeitamente o padrão do meu coração. Afinal é onde voce mora! 💝",
     },
   },
   {
@@ -525,7 +525,7 @@ const bookPages: BookPage[] = [
       },
       {
         text: "👑",
-        message: "Você é minha rainha! 👑 Merece ser tratada como a princesa que é! 👸",
+        message: "Você é minha rainha! 👑 Mas também é o meu nenem! 👸",
         icon: Star,
         position: { x: 60, y: 45 },
       },
@@ -1714,13 +1714,13 @@ export default function InteractiveLoveBook() {
             </div>
 
             <div className="mb-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="font-semibold text-amber-800 mb-2">O que você vai encontrar:</h3>
+              <h3 className="font-semibold text-amber-800 mb-2">Mini sinopse:</h3>
               <div className="text-sm text-amber-700 space-y-1">
-                <p>📖 7 capítulos da nossa história</p>
-                <p>🎮 jogos interativos únicos</p>
-                <p>💕 Surpresas escondidas em cada página</p>
-                <p>🎁 Muito amor e dedicação</p>
-                <p>✍️ Página final para sua mensagem</p>
+                <p>Olá Isabele Da silva Luetkemeyer</p>
+                <p>Este não é apenas um livro, é um pedaço do meu coração.</p>
+                <p>Cada página foi criada para que, quando a saudade apertar,</p>
+                <p>você possa me encontrar nas palavras, nos jogos e nos pequenos detalhes.</p>
+                <p>É um lugar seguro onde, mesmo distante, eu sempre estarei ao seu lado."</p>
               </div>
             </div>
 
