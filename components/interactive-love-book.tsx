@@ -1,10 +1,10 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Heart, ChevronLeft, ChevronRight, Check, Mail, Star, Gift, Music } from "lucide-react"
+import { Heart, ChevronLeft, ChevronRight, Check, Mail, Star, Gift, Music, Volume2, VolumeX } from "lucide-react"
 
 interface Surprise {
   text: string
@@ -27,6 +27,7 @@ interface InteractiveData {
     | "connect-dots"
     | "number-game"
     | "pattern-match"
+    | "image-memory"
   data: any
   completed: boolean
   reward: string
@@ -133,23 +134,36 @@ const bookPages: BookPage[] = [
       reward: "🎉 Correto! O AMOR é a resposta para tudo! Você é muito inteligente, mais um motivo para te amar! 🎉",
     },
   },
+  // Página 7 substituída - Jogo de Memória com Imagem
   {
     id: 7,
     type: "interactive",
-    title: "Jogo das Cores do Amor",
-    content: "Memorize a sequência de cores e repita na ordem certa!",
+    title: "Jogo da Memória Especial",
+    content: "Encontre os pares para revelar nossa foto especial!",
     interactive: {
-      type: "color-match",
+      type: "image-memory",
       data: {
-        sequence: ["red", "pink", "purple", "red"],
-        userSequence: [],
-        showSequence: true,
-        sequenceStep: 0,
-        gamePhase: "showing",
+        cards: [
+          { id: 1, imagePart: "part1", matched: false, flipped: false },
+          { id: 2, imagePart: "part2", matched: false, flipped: false },
+          { id: 3, imagePart: "part3", matched: false, flipped: false },
+          { id: 4, imagePart: "part4", matched: false, flipped: false },
+          { id: 5, imagePart: "part5", matched: false, flipped: false },
+          { id: 6, imagePart: "part6", matched: false, flipped: false },
+          { id: 7, imagePart: "part1", matched: false, flipped: false },
+          { id: 8, imagePart: "part2", matched: false, flipped: false },
+          { id: 9, imagePart: "part3", matched: false, flipped: false },
+          { id: 10, imagePart: "part4", matched: false, flipped: false },
+          { id: 11, imagePart: "part5", matched: false, flipped: false },
+          { id: 12, imagePart: "part6", matched: false, flipped: false },
+        ],
+        flipped: [],
+        matched: [],
         attempts: 0,
+        canFlip: true,
       },
       completed: false,
-      reward: "🌈 Perfeito! Você trouxe todas as cores para minha vida! Antes de você, tudo era cinza! 🌈",
+      reward: "🌈 Perfeito! Esta foto representa um dos nossos melhores momentos juntos! 🌈",
     },
   },
 
@@ -260,7 +274,7 @@ const bookPages: BookPage[] = [
         correct: 0,
       },
       completed: false,
-      reward: "💘 Perfeito! A sequência do amor sempre cresce, assim como meus sentimentos por você! 💘",
+      reward: "💘 Perfeito! A sequência do amor sempre cresce, assim como meus sentiments por você! 💘",
     },
   },
   {
@@ -340,7 +354,7 @@ const bookPages: BookPage[] = [
             { row: 0, col: 2 },
             { row: 0, col: 3 },
           ],
-          CARINHO: [
+          UNIDOS: [
             { row: 1, col: 0 },
             { row: 1, col: 1 },
             { row: 1, col: 2 },
@@ -515,7 +529,7 @@ const bookPages: BookPage[] = [
     id: 27,
     type: "surprise",
     title: "Tesouro de Surpresas Especiais",
-    content: "Você encontrou um baú de tesouros! Toque em cada joia para descobrir surpresas especiais! 💎",
+    content: "Você encontrou um baú de tesouros! Toque em cada joia para descobrir surpresas especias! 💎",
     surprises: [
       {
         text: "💎",
@@ -571,7 +585,7 @@ const bookPages: BookPage[] = [
     type: "story",
     title: "Infinito",
     content:
-      "Não importa quantas páginas este livro tenha, nossa história nunca terá fim. Cada dia é uma nova página, cada momento uma nova linha de amor. Te amo hoje, amanhã e sempre!",
+      "Não importa quantas páginas este livro tenha, nossa história nunca terá fim. Cada dia é uma nova página, cada momento uma nova linha de love. Te amo hoje, amanhã e sempre!",
     surprises: [
       {
         text: "♾️",
@@ -590,6 +604,16 @@ const bookPages: BookPage[] = [
   },
 ]
 
+// Lista de músicas de fundo
+const backgroundMusic = [
+  "/music/music1.mp3",
+  "/music/music2.mp3",
+  "/music/music3.mp3",
+  "/music/music4.mp3",
+  "/music/music5.mp3",
+  "/music/music6.mp3",
+]
+
 export default function InteractiveLoveBook() {
   const [currentPage, setCurrentPage] = useState(0)
   const [isFlipping, setIsFlipping] = useState(false)
@@ -598,6 +622,9 @@ export default function InteractiveLoveBook() {
   const [showSurprise, setShowSurprise] = useState<string | null>(null)
   const [message, setMessage] = useState("")
   const [hearts, setHearts] = useState<Array<{ id: number; x: number; y: number }>>([])
+  const [currentMusicIndex, setCurrentMusicIndex] = useState(0)
+  const [isMusicPlaying, setIsMusicPlaying] = useState(true)
+  const audioRef = useRef<HTMLAudioElement>(null)
 
   // Efeito de corações flutuantes
   useEffect(() => {
@@ -617,6 +644,34 @@ export default function InteractiveLoveBook() {
     return () => clearInterval(interval)
   }, [bookStarted])
 
+  // Efeito para tocar música de fundo
+  useEffect(() => {
+    if (!bookStarted) return
+
+    const audio = audioRef.current
+    if (!audio) return
+
+    const playMusic = async () => {
+      try {
+        audio.src = backgroundMusic[currentMusicIndex]
+        await audio.play()
+        setIsMusicPlaying(true)
+      } catch (error) {
+        console.error("Erro ao reproduzir música:", error)
+        setIsMusicPlaying(false)
+      }
+    }
+
+    playMusic()
+
+    const handleEnded = () => {
+      setCurrentMusicIndex((prev) => (prev + 1) % backgroundMusic.length)
+    }
+
+    audio.addEventListener("ended", handleEnded)
+    return () => audio.removeEventListener("ended", handleEnded)
+  }, [bookStarted, currentMusicIndex])
+
   // Inicializar estados das páginas interativas
   useEffect(() => {
     const initialStates: Record<number, any> = {}
@@ -632,6 +687,14 @@ export default function InteractiveLoveBook() {
             shuffled[j].currentPos = temp
           }
           initialStates[page.id] = { ...page.interactive.data, pieces: shuffled }
+        } else if (page.interactive.type === "image-memory") {
+          // Embaralhar cartas do jogo de memória com imagem
+          const shuffled = [...page.interactive.data.cards]
+          for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1))
+            ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+          }
+          initialStates[page.id] = { ...page.interactive.data, cards: shuffled }
         } else {
           initialStates[page.id] = { ...page.interactive.data }
         }
@@ -793,6 +856,75 @@ export default function InteractiveLoveBook() {
     }
   }
 
+  // Handler para jogo de memória com imagem
+  const handleImageMemoryCard = (pageId: number, index: number) => {
+    const currentState = pageStates[pageId]
+    if (!currentState) return
+
+    // Não permitir clique se já tem 2 cartas viradas ou se a carta já está matched
+    if (!currentState.canFlip || currentState.flipped.length >= 2 || currentState.matched.includes(index)) {
+      return
+    }
+
+    // Não permitir clicar na mesma carta duas vezes
+    if (currentState.flipped.includes(index)) {
+      return
+    }
+
+    const newFlipped = [...currentState.flipped, index]
+    setPageStates((prev) => ({
+      ...prev,
+      [pageId]: { ...currentState, flipped: newFlipped },
+    }))
+
+    // Se virou 2 cartas, verificar se são iguais
+    if (newFlipped.length === 2) {
+      setPageStates((prev) => ({
+        ...prev,
+        [pageId]: { ...currentState, flipped: newFlipped, canFlip: false },
+      }))
+
+      setTimeout(() => {
+        const [first, second] = newFlipped
+        const cards = currentState.cards
+
+        if (cards[first].imagePart === cards[second].imagePart) {
+          // Match encontrado
+          const newMatched = [...currentState.matched, first, second]
+          setPageStates((prev) => ({
+            ...prev,
+            [pageId]: {
+              ...currentState,
+              matched: newMatched,
+              flipped: [],
+              attempts: currentState.attempts + 1,
+              canFlip: true,
+            },
+          }))
+
+          // Verificar se o jogo terminou
+          if (newMatched.length === currentState.cards.length) {
+            const page = bookPages.find((p) => p.id === pageId)
+            if (page && page.interactive && page.interactive.reward) {
+              setTimeout(() => setShowSurprise(page.interactive.reward), 500)
+            }
+          }
+        } else {
+          // Não é match, virar as cartas de volta
+          setPageStates((prev) => ({
+            ...prev,
+            [pageId]: {
+              ...currentState,
+              flipped: [],
+              attempts: currentState.attempts + 1,
+              canFlip: true,
+            },
+          }))
+        }
+      }, 1000)
+    }
+  }
+
   // Handler para sequência
   const handleSequence = (pageId: number, optionIndex: number) => {
     const currentState = pageStates[pageId]
@@ -807,75 +939,6 @@ export default function InteractiveLoveBook() {
         setShowSurprise(page.interactive.reward)
       }
     }
-  }
-
-  // Handler para jogo de cores
-  const handleColorMatch = (pageId: number, color: string) => {
-    const currentState = pageStates[pageId]
-    if (!currentState) return
-
-    if (currentState.gamePhase !== "playing") return
-
-    const newUserSequence = [...currentState.userSequence, color]
-    setPageStates((prev) => ({
-      ...prev,
-      [pageId]: { ...currentState, userSequence: newUserSequence },
-    }))
-
-    // Verificar se a sequência está correta até agora
-    const isCorrectSoFar = newUserSequence.every((userColor, index) => userColor === currentState.sequence[index])
-
-    if (!isCorrectSoFar) {
-      // Sequência errada, resetar
-      setTimeout(() => {
-        setPageStates((prev) => ({
-          ...prev,
-          [pageId]: {
-            ...currentState,
-            userSequence: [],
-            gamePhase: "showing",
-            sequenceStep: 0,
-            attempts: currentState.attempts + 1,
-          },
-        }))
-        // Mostrar sequência novamente
-        showColorSequence(pageId)
-      }, 1000)
-      return
-    }
-
-    if (newUserSequence.length === currentState.sequence.length) {
-      // Sequência completa e correta!
-      const page = bookPages.find((p) => p.id === pageId)
-      if (page && page.interactive && page.interactive.reward) {
-        setTimeout(() => setShowSurprise(page.interactive.reward), 500)
-      }
-    }
-  }
-
-  // Função para mostrar sequência de cores
-  const showColorSequence = (pageId: number) => {
-    const currentState = pageStates[pageId]
-    if (!currentState) return
-
-    let step = 0
-
-    const showNext = () => {
-      if (step < currentState.sequence.length) {
-        setPageStates((prev) => ({
-          ...prev,
-          [pageId]: { ...currentState, sequenceStep: step, gamePhase: "showing" },
-        }))
-        step++
-        setTimeout(showNext, 800)
-      } else {
-        setPageStates((prev) => ({
-          ...prev,
-          [pageId]: { ...currentState, gamePhase: "playing", sequenceStep: 0 },
-        }))
-      }
-    }
-    showNext()
   }
 
   // Handler para slider
@@ -1194,6 +1257,19 @@ export default function InteractiveLoveBook() {
     }
   }
 
+  // Toggle para música
+  const toggleMusic = () => {
+    const audio = audioRef.current
+    if (!audio) return
+
+    if (isMusicPlaying) {
+      audio.pause()
+      setIsMusicPlaying(false)
+    } else {
+      audio.play().then(() => setIsMusicPlaying(true)).catch(() => setIsMusicPlaying(false))
+    }
+  }
+
   const renderInteractivePage = (page: BookPage) => {
     const state = pageStates[page.id]
     if (!state || !page.interactive) return null
@@ -1299,6 +1375,47 @@ export default function InteractiveLoveBook() {
           </div>
         )
 
+      case "image-memory":
+        return (
+          <div>
+            <p className="text-amber-700 mb-4">{page.content}</p>
+            <div className="grid grid-cols-4 gap-2 mb-4 max-w-xs mx-auto">
+              {state.cards.map((card: any, index: number) => (
+                <button
+                  key={index}
+                  onClick={() => handleImageMemoryCard(page.id, index)}
+                  className={`w-16 h-16 rounded-lg border-2 overflow-hidden transition-all duration-300 ${
+                    state.flipped.includes(index) || state.matched.includes(index)
+                      ? "bg-pink-100 border-pink-300"
+                      : "bg-amber-100 border-amber-300 hover:bg-amber-200"
+                  }`}
+                  disabled={state.matched.includes(index) || !state.canFlip}
+                >
+                  {state.flipped.includes(index) || state.matched.includes(index) ? (
+                    <div 
+                      className="w-full h-full bg-cover bg-center"
+                      style={{ 
+                        backgroundImage: `url('/memory-image/${card.imagePart}.jpg')`,
+                        backgroundSize: "400% 300%",
+                        backgroundPosition: `${((parseInt(card.imagePart.slice(4)) - 1) % 3) * 33}% ${Math.floor((parseInt(card.imagePart.slice(4)) - 1) / 3) * 50}%`
+                      }}
+                    ></div>
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-2xl">❓</div>
+                  )}
+                </button>
+              ))}
+            </div>
+            <p className="text-sm text-amber-600 text-center">Tentativas: {state.attempts}</p>
+            {state.matched.length === state.cards.length && (
+              <div className="text-center text-green-600 font-bold mt-4">
+                <Check className="w-6 h-6 inline mr-2" />
+                Parabéns! 🎉
+              </div>
+            )}
+          </div>
+        )
+
       case "sequence":
         return (
           <div>
@@ -1328,87 +1445,6 @@ export default function InteractiveLoveBook() {
                   <Check className="w-6 h-6 inline mr-2" />
                   Perfeito! 🎉
                 </div>
-              )}
-            </div>
-          </div>
-        )
-
-      case "color-match":
-        return (
-          <div>
-            <p className="text-amber-700 mb-4">{page.content}</p>
-            <div className="text-center mb-6">
-              {state.gamePhase === "showing" && (
-                <div className="mb-4">
-                  <p className="text-sm text-amber-600 mb-2">Memorize a sequência:</p>
-                  <div className="flex justify-center gap-2 mb-4">
-                    {state.sequence.map((color: string, index: number) => (
-                      <div
-                        key={index}
-                        className={`w-12 h-12 rounded-full border-2 transition-all duration-300 ${
-                          index === state.sequenceStep ? "scale-125 border-4" : ""
-                        } ${
-                          color === "red"
-                            ? "bg-red-500"
-                            : color === "pink"
-                              ? "bg-pink-500"
-                              : color === "purple"
-                                ? "bg-purple-500"
-                                : "bg-blue-500"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {state.gamePhase === "playing" && (
-                <div>
-                  <p className="text-sm text-amber-600 mb-2">Repita a sequência:</p>
-                  <div className="flex justify-center gap-2 mb-4">
-                    {state.userSequence.map((color: string, index: number) => (
-                      <div
-                        key={index}
-                        className={`w-8 h-8 rounded-full border-2 ${
-                          color === "red"
-                            ? "bg-red-500"
-                            : color === "pink"
-                              ? "bg-pink-500"
-                              : color === "purple"
-                                ? "bg-purple-500"
-                                : "bg-blue-500"
-                        }`}
-                      />
-                    ))}
-                    {Array.from({ length: state.sequence.length - state.userSequence.length }).map((_, index) => (
-                      <div key={index} className="w-8 h-8 rounded-full border-2 border-gray-300 bg-gray-100" />
-                    ))}
-                  </div>
-
-                  <div className="flex justify-center gap-2">
-                    {["red", "pink", "purple", "blue"].map((color) => (
-                      <button
-                        key={color}
-                        onClick={() => handleColorMatch(page.id, color)}
-                        className={`w-12 h-12 rounded-full border-2 border-gray-300 hover:scale-110 transition-transform ${
-                          color === "red"
-                            ? "bg-red-500"
-                            : color === "pink"
-                              ? "bg-pink-500"
-                              : color === "purple"
-                                ? "bg-purple-500"
-                                : "bg-blue-500"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {state.gamePhase === "ready" && (
-                <Button onClick={() => showColorSequence(page.id)} className="bg-amber-500 hover:bg-amber-600">
-                  Iniciar Jogo
-                </Button>
               )}
             </div>
           </div>
@@ -1739,6 +1775,21 @@ export default function InteractiveLoveBook() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Elemento de áudio para música de fundo */}
+      <audio 
+        ref={audioRef} 
+        className="hidden" 
+        loop={false}
+      />
+
+      {/* Botão para controlar a música */}
+      <button
+        onClick={toggleMusic}
+        className="absolute top-4 left-4 z-10 bg-amber-100 hover:bg-amber-200 p-2 rounded-full shadow-md transition-all duration-200"
+      >
+        {isMusicPlaying ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
+      </button>
+
       {/* Corações flutuantes */}
       {hearts.map((heart) => (
         <Heart
